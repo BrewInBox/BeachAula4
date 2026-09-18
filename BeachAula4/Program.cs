@@ -29,8 +29,19 @@ app.MapGet("/api/quadras", () =>
 
 app.MapPost("/api/reservas", (CriarReservaDto dto) =>
 {
-    Reserva reserva = new Reserva(dto.ClienteId, dto.QuadraId, dto.Inicio, dto.Fim);
-    Console.WriteLine(reserva.Valor);
+    if (dto.Inicio <= dto.Fim)
+        return Results.BadRequest("Horário Inválido");
+
+    decimal valor = 100;
+
+    if (dto.TipoCliente == 1)
+        valor *= 0.8m;
+    else if (dto.TipoCliente == 2)
+        valor *= 0.7m;
+
+    var reserva = new Reserva(dto.ClienteId, dto.QuadraId, dto.Inicio, dto.Fim);
+
+    return Results.Ok(reserva);
 });
 
 // Configure the HTTP request pipeline.
