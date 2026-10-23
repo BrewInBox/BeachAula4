@@ -30,7 +30,13 @@ app.MapGet("/api/quadras/{id:int}", async (int id, IQuadraRepository repository)
 
     return quadra == null ? Results.NotFound() : Results.Ok(quadra);
 });
+//Buscar quadras ativas
+app.MapGet("/api/quadras/ativas", async (IQuadraRepository repository) =>
+{
+    var quadras = await repository.ListarAtivasAsync();
 
+    return Results.Ok(quadras);
+});
 //Cadastrar uma nova quadra ---------------------------------------------------------------------
 app.MapPost("/api/quadras", async (Quadra quadra, IQuadraRepository repository) =>
 {

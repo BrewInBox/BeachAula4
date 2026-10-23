@@ -12,6 +12,11 @@ GET {{BeachAula4_HostAddress}}/api/quadras/1
 Content-Type: application/json
 
 ###
+// Listar as quadras ativas
+GET {{BeachAula4_HostAddress}}/api/quadras/ativas
+Accept: application/json
+
+###
 // Adicionar uma quadra
 POST {{BeachAula4_HostAddress}}/api/quadras
 Content-Type: application/json

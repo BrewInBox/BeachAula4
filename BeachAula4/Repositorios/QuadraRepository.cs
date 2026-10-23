@@ -17,6 +17,10 @@ namespace BeachAula4.Repositorios
         {
             return await context.Quadras.AsNoTracking().ToListAsync();
         }
+        public async Task<List<Quadra>> ListarAtivasAsync()
+        {
+            return await context.Quadras.AsNoTracking().Where(q => q.Ativa).ToListAsync();
+        }
         public async Task<Quadra?> BuscarPorIdAsync(int id)
         {
             return await context.Quadras.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
