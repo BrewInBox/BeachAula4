@@ -1,0 +1,39 @@
+@BeachAula4_HostAddress = http://localhost:5289
+
+
+
+// Listar todas as quadras
+GET {{BeachAula4_HostAddress}}/api/quadras
+Accept: application/json
+
+###
+// Listar uma quadra 
+GET {{BeachAula4_HostAddress}}/api/quadras/1
+Content-Type: application/json
+
+###
+// Adicionar uma quadra
+POST {{BeachAula4_HostAddress}}/api/quadras
+Content-Type: application/json
+
+{
+  "Name": "Quadra dos Fundos",
+  "ValorHora": 90.00,
+  "Ativa":true,
+  "Descricao":"Quadra de areia, descoberta, sem iluminação."
+}
+
+###
+// Atualizar uma quadra
+PUT {{BeachAula4_HostAddress}}/api/quadras/1
+Content-Type: application/json
+
+{
+  "ValorHora": 120.00,
+  "Ativa":true,
+  "Descricao":"Quadra de areia, coberta, com iluminação."
+}
+
+###
+// Excluir uma quadra
+DELETE {{BeachAula4_HostAddress}}/api/quadras/5
